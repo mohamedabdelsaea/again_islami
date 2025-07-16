@@ -5,6 +5,17 @@ class TimesTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/background_t.png'),
+            fit: BoxFit.cover
+
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+      ),
+    );
   }
 }

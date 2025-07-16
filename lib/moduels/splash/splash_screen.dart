@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:again_islami/core/routes/page_route_name.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 3),
+      Duration(seconds: 4),
       () {
         Navigator.pushNamedAndRemoveUntil(
           context,
@@ -28,6 +29,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    int duration = 3;
+    int delay = 1;
     var size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
@@ -40,35 +43,51 @@ class _SplashScreenState extends State<SplashScreen> {
         backgroundColor: Colors.transparent,
         body: Stack(
           children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Image.asset(
-                'assets/images/SplashScreen2.png',
-                height: size.height * 0.35,
+            FadeInDown(
+              duration: Duration(seconds: duration),
+              delay: Duration(seconds: delay),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Image.asset(
+                  'assets/images/SplashScreen2.png',
+                  height: size.height * 0.35,
+                ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: size.height * 0.1),
-              alignment: Alignment.topLeft,
-              child: Image.asset(
-                'assets/images/SplashScreen3.png',
-                height: size.height * 0.3,
+            FadeInLeft(
+              duration: Duration(seconds: duration),
+              delay: Duration(seconds: delay),
+              child: Container(
+                padding: EdgeInsets.only(top: size.height * 0.1),
+                alignment: Alignment.topLeft,
+                child: Image.asset(
+                  'assets/images/SplashScreen3.png',
+                  height: size.height * 0.3,
+                ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(bottom: size.height * 0.1),
-              alignment: Alignment.bottomRight,
-              child: Image.asset(
-                'assets/images/SplashScreen4.png',
-                height: size.height * 0.3,
+            FadeInRight(
+              duration: Duration(seconds: duration),
+              delay: Duration(seconds: delay),
+              child: Container(
+                padding: EdgeInsets.only(bottom: size.height * 0.1),
+                alignment: Alignment.bottomRight,
+                child: Image.asset(
+                  'assets/images/SplashScreen4.png',
+                  height: size.height * 0.3,
+                ),
               ),
             ),
-            Container(
-              padding: EdgeInsets.only(top: size.height * 0.05),
-              alignment: Alignment.center,
-              child: Image.asset(
-                'assets/images/logo.png',
-                height: size.height * 0.3,
+            ZoomIn(
+              duration: Duration(seconds: duration),
+              delay: Duration(seconds: delay),
+              child: Container(
+                padding: EdgeInsets.only(top: size.height * 0.05),
+                alignment: Alignment.center,
+                child: Image.asset(
+                  'assets/images/logo.png',
+                  height: size.height * 0.3,
+                ),
               ),
             ),
           ],
