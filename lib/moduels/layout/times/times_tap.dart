@@ -42,6 +42,14 @@ class _PrayerTimesScreenState extends State<TimesTap> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
+    double fontSize = screenWidth * 0.045;
+    double buttonFontSize = screenWidth * 0.045;
+    double buttonWidth = screenWidth * 0.35;
+    double dateFontSize = screenWidth * 0.045;
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -55,55 +63,77 @@ class _PrayerTimesScreenState extends State<TimesTap> {
           title: Text(
             'مواقيت الصلاة - القاهرة',
             style: TextStyle(
-                color: AppColor.primary,
-                fontWeight: FontWeight.bold,
-                fontSize: 22),
+              color: AppColor.primary,
+              fontWeight: FontWeight.bold,
+              fontSize: fontSize + 2,
+            ),
           ),
           centerTitle: true,
           backgroundColor: Colors.transparent,
         ),
         body: Padding(
-          padding: EdgeInsets.all(16),
+          padding: const EdgeInsets.all(16),
           child: Column(
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  ElevatedButton(
-                    onPressed: () => _changeDay(-1),
-                    child: Text("اليوم السابق" ,
-                      style: TextStyle(
-                        color: AppColor.whites,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),),
-                    style: ButtonStyle(backgroundColor: WidgetStatePropertyAll(AppColor.primary)),
-                  ),
-                  Text(
-                    DateFormat.yMMMMEEEEd('ar').format(selectedDate),
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.primary,
+                  SizedBox(
+                    width: buttonWidth,
+                    child: ElevatedButton(
+                      onPressed: () => _changeDay(-1),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.primary,
+                      ),
+                      child: Text(
+                        "اليوم السابق",
+                        style: TextStyle(
+                          color: AppColor.whites,
+                          fontWeight: FontWeight.bold,
+                          fontSize: buttonFontSize,
+                        ),
+                      ),
                     ),
                   ),
-                  ElevatedButton(
-                    onPressed: () => _changeDay(1),
-                    child:  Text("اليوم التالي",
-                      style: TextStyle(
-                        color: AppColor.whites,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 22),),
-                    style: ButtonStyle( backgroundColor: WidgetStateProperty.all(AppColor.primary)),
+                  Expanded(
+                    child: Center(
+                      child: Text(
+                        DateFormat.yMMMMEEEEd('ar').format(selectedDate),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: dateFontSize,
+                          fontWeight: FontWeight.bold,
+                          color: AppColor.primary,
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: buttonWidth,
+                    child: ElevatedButton(
+                      onPressed: () => _changeDay(1),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColor.primary,
+                      ),
+                      child: Text(
+                        "اليوم التالي",
+                        style: TextStyle(
+                          color: AppColor.whites,
+                          fontWeight: FontWeight.bold,
+                          fontSize: buttonFontSize,
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
               const SizedBox(height: 30),
-              prayerRow("الفجر", prayerTimes.fajr),
-              prayerRow("الشروق", prayerTimes.sunrise),
-              prayerRow("الظهر", prayerTimes.dhuhr),
-              prayerRow("العصر", prayerTimes.asr),
-              prayerRow("المغرب", prayerTimes.maghrib),
-              prayerRow("العشاء", prayerTimes.isha),
+              prayerRow("الفجر", prayerTimes.fajr, fontSize),
+              prayerRow("الشروق", prayerTimes.sunrise, fontSize),
+              prayerRow("الظهر", prayerTimes.dhuhr, fontSize),
+              prayerRow("العصر", prayerTimes.asr, fontSize),
+              prayerRow("المغرب", prayerTimes.maghrib, fontSize),
+              prayerRow("العشاء", prayerTimes.isha, fontSize),
             ],
           ),
         ),
@@ -111,16 +141,17 @@ class _PrayerTimesScreenState extends State<TimesTap> {
     );
   }
 
-  Widget prayerRow(String name, DateTime time) {
+  Widget prayerRow(String name, DateTime time, double fontSize) {
     return ListTile(
       leading: Icon(
         Icons.access_time,
         color: AppColor.primary,
+        size: fontSize + 4,
       ),
       title: Text(
         name,
         style: TextStyle(
-          fontSize: 18,
+          fontSize: fontSize,
           fontWeight: FontWeight.bold,
           color: AppColor.primary,
         ),
@@ -128,7 +159,7 @@ class _PrayerTimesScreenState extends State<TimesTap> {
       trailing: Text(
         formatTime(time),
         style: TextStyle(
-          fontSize: 16,
+          fontSize: fontSize - 2,
           color: AppColor.primary,
         ),
       ),
