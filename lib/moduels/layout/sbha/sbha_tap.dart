@@ -79,7 +79,7 @@ class _SbhaTapState extends State<SbhaTap> {
   onSbha() {
     num++;
     angle += 30;
-    if (num == 6) {
+    if (num == 33) {
       num = 0;
       currantIndex++;
       if (currantIndex == 3) currantIndex = 0;

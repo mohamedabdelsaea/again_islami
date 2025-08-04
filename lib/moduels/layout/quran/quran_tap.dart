@@ -1,4 +1,8 @@
+import 'package:again_islami/core/routes/page_route_name.dart';
 import 'package:again_islami/core/theme/app_color.dart';
+import 'package:again_islami/moduels/layout/quran/sura_push.dart';
+import 'package:again_islami/moduels/layout/quran/widget/quran_list.dart';
+import 'package:again_islami/moduels/layout/quran/widget/sura_data.dart';
 import 'package:flutter/material.dart';
 
 class QuranTap extends StatelessWidget {
@@ -6,6 +10,7 @@ class QuranTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    late SuraData suraData;
     var size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
@@ -18,6 +23,7 @@ class QuranTap extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+
             Image.asset(
               'assets/images/Logo8.png',
               height: size.height * 0.2,
@@ -106,7 +112,18 @@ class QuranTap extends StatelessWidget {
                     color: AppColor.primary),
               ),
             ),
-
+            // ListView.separated(
+            //   itemBuilder: (context, index) {
+            //     return  ;
+            //   },
+            //   separatorBuilder: (context, index) => Divider(
+            //     indent: size.width*0.1,
+            //     endIndent: size.width*0.1,
+            //     thickness: 4,
+            //     color: AppColor.primary,
+            //   ),
+            //   itemCount: 114,
+            // ),
           ],
         ),
       ),
