@@ -10,24 +10,25 @@ class QuranTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late SuraData suraData;
     var size = MediaQuery.of(context).size;
-    return Container(
-      decoration: BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage('assets/images/q.png'), fit: BoxFit.cover),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
 
+    return Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/images/q.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
             Image.asset(
               'assets/images/Logo8.png',
               height: size.height * 0.2,
-              width: size.width * 1,
+              width: size.width,
+              fit: BoxFit.cover,
             ),
             Padding(
               padding: EdgeInsets.all(15),
@@ -49,8 +50,8 @@ class QuranTap extends StatelessWidget {
                   hintStyle: TextStyle(
                       color: AppColor.primary, fontWeight: FontWeight.bold),
                   prefixIcon: Padding(
-                    padding: EdgeInsets.only(
-                        left: 15, right: 22, bottom: 10, top: 10),
+                    padding:
+                    EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     child: ImageIcon(
                       AssetImage('assets/icons/quran.png'),
                       color: AppColor.primary,
@@ -62,9 +63,8 @@ class QuranTap extends StatelessWidget {
                 cursorColor: AppColor.primary,
               ),
             ),
-            Container(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 18),
-              alignment: Alignment.topLeft,
               child: Text(
                 'Most Recently ',
                 style: TextStyle(
@@ -73,37 +73,49 @@ class QuranTap extends StatelessWidget {
                     color: AppColor.primary),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                width: 285,
-                height: 150,
-                decoration: BoxDecoration(
-                  color: AppColor.primary,
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text('Al-Anbiya',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
-                        Text('الأنبياء',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
-                        Text('122 Verses', style: TextStyle(fontSize: 14)),
-                      ],
+            SizedBox(
+              height: 155,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Container(
+                      width: 285,
+                      height: 150,
+                      decoration: BoxDecoration(
+                        color: AppColor.primary,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Row(
+                        children: [
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Text('Al-Anbiya',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold)),
+                              Text('الأنبياء',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold)),
+                              Text('122 Verses',
+                                  style: TextStyle(fontSize: 14)),
+                            ],
+                          ),
+                          Spacer(),
+                          Image.asset('assets/images/quran_search.png'),
+                        ],
+                      ),
                     ),
-                    Spacer(),
-                    Image.asset('assets/images/quran_search.png'),
-                  ],
-                ),
+                  );
+                },
               ),
             ),
-            Container(
+            Padding(
               padding: EdgeInsets.symmetric(horizontal: 18),
-              alignment: Alignment.topLeft,
               child: Text(
                 'Suras List ',
                 style: TextStyle(
@@ -112,21 +124,23 @@ class QuranTap extends StatelessWidget {
                     color: AppColor.primary),
               ),
             ),
-            // ListView.separated(
-            //   itemBuilder: (context, index) {
-            //     return  ;
-            //   },
-            //   separatorBuilder: (context, index) => Divider(
-            //     indent: size.width*0.1,
-            //     endIndent: size.width*0.1,
-            //     thickness: 4,
-            //     color: AppColor.primary,
-            //   ),
-            //   itemCount: 114,
-            // ),
+            ListView.separated(
+              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 15,
+              itemBuilder: (context, index) => QuranList(),
+              separatorBuilder: (context, index) => Divider(
+                indent: size.width * 0.1,
+                endIndent: size.width * 0.1,
+                thickness: 2,
+                color: AppColor.primary,
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
+

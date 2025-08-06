@@ -3,9 +3,9 @@ import 'package:again_islami/moduels/layout/quran/widget/sura_data.dart';
 import 'package:flutter/material.dart';
 
 class QuranList extends StatelessWidget {
-  final SuraData suraData;
+  // final SuraData suraData;
 
-  const QuranList({super.key, required this.suraData});
+  const QuranList({super.key,});
 
   @override
   Widget build(BuildContext context) {
@@ -16,24 +16,45 @@ class QuranList extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
               image: DecorationImage(
-            image: AssetImage('assets/icons/sura_icon.png'),
-          )),
-          child: Text(suraData.id.toString()),
+                image: AssetImage('assets/icons/sura_icon.png'),
+              )),
+          alignment: Alignment.center,
+          child: Text(
+            99.toString(),
+            style: TextStyle(
+              color: AppColor.primary,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ),
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(
-            suraData.nameEN,
-            style: TextStyle(color: AppColor.primary),
-          ),
-          SizedBox(height: 10),
-          Text(
-            suraData.verses,
-            style: TextStyle(color: AppColor.primary),
-          ),
-        ]),
+        Column(
+          children: [
+            Text(
+              'Al-Fatiha',
+              style: TextStyle(
+                color: AppColor.primary,
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+            Text(
+              '7 verses',
+              style: TextStyle(
+                color: AppColor.primary,
+                fontWeight: FontWeight.w500,
+                fontSize: 14,
+              ),
+            ),
+          ],
+        ),
+        Spacer(),
         Text(
-          suraData.nameAR,
-          style: TextStyle(color: AppColor.primary),
+          'الفاتحه',
+          style: TextStyle(
+            color: AppColor.primary,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
         ),
       ],
     );
