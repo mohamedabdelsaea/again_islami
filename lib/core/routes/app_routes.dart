@@ -20,10 +20,6 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (context) => Layout(),
         );
-        case PageRouteName.suraPush:
-        return MaterialPageRoute(
-          builder: (context) => SuraPush(),
-        );
       default:
         return MaterialPageRoute(
           builder: (context) => SplashScreen(),

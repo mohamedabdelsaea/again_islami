@@ -1,14 +1,33 @@
 import 'package:again_islami/core/theme/app_color.dart';
+import 'package:again_islami/moduels/layout/provider/setting_provider.dart';
 import 'package:again_islami/moduels/layout/quran/sura_push.dart';
 import 'package:again_islami/moduels/layout/quran/widget/quran_list.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class QuranTap extends StatelessWidget {
+class QuranTap extends StatefulWidget {
   const QuranTap({super.key});
+
+  @override
+  State<QuranTap> createState() => _QuranTapState();
+}
+
+class _QuranTapState extends State<QuranTap> {
+  String searchQuery = "";
 
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
+
+    // جلب كل السور
+    final suraList = Provider.of<SettingProvider>(context).suraData;
+
+    // فلترة على حسب البحث
+    final filteredList = suraList.where((sura) {
+      final query = searchQuery.toLowerCase();
+      return sura.nameEN.toLowerCase().contains(query) ||
+          sura.nameAR.contains(query);
+    }).toList();
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -21,7 +40,7 @@ class QuranTap extends StatelessWidget {
         ),
         child: CustomScrollView(
           slivers: [
-            /// اللوجو
+            // اللوجو
             SliverToBoxAdapter(
               child: Image.asset(
                 'assets/images/Logo8.png',
@@ -31,13 +50,20 @@ class QuranTap extends StatelessWidget {
               ),
             ),
 
-            /// مربع البحث
+            // مربع البحث
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: TextFormField(
+                  onChanged: (value) {
+                    setState(() {
+                      searchQuery = value;
+                    });
+                  },
                   style: TextStyle(
-                      color: AppColor.primary, fontWeight: FontWeight.bold),
+                    color: AppColor.primary,
+                    fontWeight: FontWeight.bold,
+                  ),
                   decoration: InputDecoration(
                     labelText: 'Sura Name',
                     focusedBorder: OutlineInputBorder(
@@ -49,12 +75,11 @@ class QuranTap extends StatelessWidget {
                       borderSide: BorderSide(color: AppColor.primary),
                     ),
                     labelStyle: TextStyle(
-                        color: AppColor.primary, fontWeight: FontWeight.bold),
-                    hintStyle: TextStyle(
-                        color: AppColor.primary, fontWeight: FontWeight.bold),
+                      color: AppColor.primary,
+                      fontWeight: FontWeight.bold,
+                    ),
                     prefixIcon: const Padding(
-                      padding:
-                      EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       child: ImageIcon(
                         AssetImage('assets/icons/quran.png'),
                       ),
@@ -67,121 +92,51 @@ class QuranTap extends StatelessWidget {
               ),
             ),
 
-            /// Most Recently
-            SliverToBoxAdapter(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: Text(
-                  'Most Recently ',
-                  style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: AppColor.primary),
-                ),
-              ),
-            ),
-
-            /// Horizontal List
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 155,
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: GestureDetector(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SuraPush(
-
-                                // suraName: "الأنبياء",
-                                // suraIndex: index,
-                              ),
-                            ),
-                          );
-                        },
-                        child: Container(
-                          width: 285,
-                          height: 150,
-                          decoration: BoxDecoration(
-                            color: AppColor.primary,
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Row(
-                            children: [
-                              Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text('Al-Anbiya',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold)),
-                                  Text('الأنبياء',
-                                      style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold)),
-                                  Text('122 Verses',
-                                      style: TextStyle(fontSize: 14)),
-                                ],
-                              ),
-                              const Spacer(),
-                              Image.asset('assets/images/quran_search.png'),
-                            ],
-                          ),
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-            ),
-
-            /// Suras List Title
+            // Suras List
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: Text(
                   'Suras List ',
                   style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      color: AppColor.primary),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    color: AppColor.primary,
+                  ),
                 ),
               ),
             ),
+            SliverToBoxAdapter(child: SizedBox(height: 20)),
 
-            /// Suras List
-            SliverList.separated(
-              itemCount: 114,
-              separatorBuilder: (context, index) => Divider(
-                indent: size.width * 0.1,
-                endIndent: size.width * 0.1,
-                thickness: 2,
-                color: AppColor.primary,
-              ),
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SuraPush(
-                          // suraName: "سورة رقم ${index + 1}",
-                          // suraIndex: index,
+            // الليست بعد الفلترة
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              sliver: SliverList.separated(
+                itemCount: filteredList.length,
+                separatorBuilder: (context, index) => Divider(
+                  indent: size.width * 0.1,
+                  endIndent: size.width * 0.1,
+                  thickness: 2,
+                  color: AppColor.primary,
+                ),
+                itemBuilder: (context, index) {
+                  final sura = filteredList[index];
+                  return GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SuraPush(sura: sura),
                         ),
-                      ),
-                    );
-                  },
-                  child: const QuranList(),
-                );
-              },
+                      );
+                    },
+                    child: QuranList(sura: sura),
+                  );
+                },
+              ),
             ),
+
+            SliverToBoxAdapter(child: SizedBox(height: 10)),
           ],
         ),
       ),

@@ -3,9 +3,9 @@ import 'package:again_islami/moduels/layout/quran/widget/sura_data.dart';
 import 'package:flutter/material.dart';
 
 class QuranList extends StatelessWidget {
-  // final SuraData suraData;
+  final SuraData sura;
 
-  const QuranList({super.key,});
+  const QuranList({super.key, required this.sura});
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +16,11 @@ class QuranList extends StatelessWidget {
           height: 50,
           decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage('assets/icons/sura_icon.png'),
-              )),
+            image: AssetImage('assets/icons/sura_icon.png'),
+          )),
           alignment: Alignment.center,
           child: Text(
-            99.toString(),
+            sura.id.toString(),
             style: TextStyle(
               color: AppColor.primary,
               fontWeight: FontWeight.bold,
@@ -29,16 +29,19 @@ class QuranList extends StatelessWidget {
         ),
         Column(
           children: [
-            Text(
-              'Al-Fatiha',
-              style: TextStyle(
-                color: AppColor.primary,
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12.0),
+              child: Text(
+                sura.nameEN,
+                style: TextStyle(
+                  color: AppColor.primary,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
               ),
             ),
             Text(
-              '7 verses',
+              sura.verses,
               style: TextStyle(
                 color: AppColor.primary,
                 fontWeight: FontWeight.w500,
@@ -49,7 +52,7 @@ class QuranList extends StatelessWidget {
         ),
         Spacer(),
         Text(
-          'الفاتحه',
+          sura.nameAR,
           style: TextStyle(
             color: AppColor.primary,
             fontWeight: FontWeight.bold,
