@@ -19,10 +19,9 @@ class _QuranTapState extends State<QuranTap> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-    // جلب كل السور
     final suraList = Provider.of<SettingProvider>(context).suraData;
 
-    // فلترة على حسب البحث
+
     final filteredList = suraList.where((sura) {
       final query = searchQuery.toLowerCase();
       return sura.nameEN.toLowerCase().contains(query) ||
@@ -40,7 +39,6 @@ class _QuranTapState extends State<QuranTap> {
         ),
         child: CustomScrollView(
           slivers: [
-            // اللوجو
             SliverToBoxAdapter(
               child: Image.asset(
                 'assets/images/Logo8.png',
@@ -50,7 +48,6 @@ class _QuranTapState extends State<QuranTap> {
               ),
             ),
 
-            // مربع البحث
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(15),
@@ -92,7 +89,6 @@ class _QuranTapState extends State<QuranTap> {
               ),
             ),
 
-            // Suras List
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18),
@@ -108,7 +104,6 @@ class _QuranTapState extends State<QuranTap> {
             ),
             SliverToBoxAdapter(child: SizedBox(height: 20)),
 
-            // الليست بعد الفلترة
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               sliver: SliverList.separated(
