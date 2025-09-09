@@ -44,7 +44,6 @@ class _QuranTapState extends State<QuranTap> {
                 'assets/images/Logo8.png',
                 height: size.height * 0.2,
                 width: size.width,
-                fit: BoxFit.cover,
               ),
             ),
 
