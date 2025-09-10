@@ -88,7 +88,7 @@ class _PrayerTimesScreenState extends State<TimesTap> {
                       child: Text(
                         "اليوم السابق",
                         style: TextStyle(
-                          color: AppColor.whites,
+                          color: AppColor.lastColor,
                           fontWeight: FontWeight.bold,
                           fontSize: buttonFontSize,
                         ),
@@ -118,7 +118,7 @@ class _PrayerTimesScreenState extends State<TimesTap> {
                       child: Text(
                         "اليوم التالي",
                         style: TextStyle(
-                          color: AppColor.whites,
+                          color: AppColor.lastColor,
                           fontWeight: FontWeight.bold,
                           fontSize: buttonFontSize,
                         ),
