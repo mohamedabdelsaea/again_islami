@@ -23,12 +23,10 @@ class _OnBoardingScreenState extends State<OnBoarding> {
     ["assets/images/Logo55.png", "assets/images/intro_5.png"],
   ];
 
-  /// 🟢 الدالة اللي بتخلص الـ OnBoarding
   Future<void> _finishOnBoarding() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool("onboarding_seen", true);
 
-    // يروح مباشرة للـ Layout
     if (!mounted) return;
     Navigator.pushReplacementNamed(context, PageRouteName.layout);
   }
@@ -68,7 +66,6 @@ class _OnBoardingScreenState extends State<OnBoarding> {
                           ),
                         const SizedBox(height: 30),
 
-                        /// 🟢 زرار Finish في آخر صفحة فقط
                         if (index == pages.length - 1)
                           ElevatedButton(
                             onPressed: _finishOnBoarding,
@@ -91,8 +88,6 @@ class _OnBoardingScreenState extends State<OnBoarding> {
                   },
                 ),
               ),
-
-              /// 🟢 مؤشر الصفحات
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: SmoothPageIndicator(
@@ -109,8 +104,6 @@ class _OnBoardingScreenState extends State<OnBoarding> {
               ),
             ],
           ),
-
-          /// 🟢 زرار Skip ثابت فوق يمين
           Positioned(
             top: 40,
             right: 20,

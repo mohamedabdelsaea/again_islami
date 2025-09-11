@@ -25,8 +25,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRoutes.onGenerateRoute,
-
-      // 🟢 أول صفحة هتظهر Splash
       initialRoute: PageRouteName.initial,
     );
   }

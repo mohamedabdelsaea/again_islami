@@ -12,7 +12,7 @@ class _SbhaTapState extends State<SbhaTap> {
   int num = 0;
   double angle = 0;
   int currantIndex = 0;
-  List<String> tsbe7 = ['الحمدلله', 'الله اكبر', 'سبحان الله'];
+  List<String> tsbe7 = ['الحمدلله', 'الله اكبر','لا الله الا الله ', 'سبحان الله'];
 
   @override
   Widget build(BuildContext context) {
