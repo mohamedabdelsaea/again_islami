@@ -20,7 +20,7 @@ class _SplashScreenState extends State<SplashScreen> {
       () {
         Navigator.pushNamedAndRemoveUntil(
           context,
-          PageRouteName.onboarding,
+          PageRouteName.layout,
           (route) => false,
         );
       },
