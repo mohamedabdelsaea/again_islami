@@ -41,7 +41,7 @@ class _RadioTapState extends State<RadioTap> {
                     });
                   },
                   child: Container(
-                    width: 200,
+                    width: size.width* 0.4,
                     height: 40,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -70,7 +70,7 @@ class _RadioTapState extends State<RadioTap> {
                     });
                   },
                   child: Container(
-                    width: 200,
+                    width: size.width* 0.4,
                     height: 40,
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
@@ -97,12 +97,15 @@ class _RadioTapState extends State<RadioTap> {
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Image.asset('assets/images/radio_1.png'),
-                      SizedBox(height: 30),
-                      Image.asset('assets/images/radio_2.png'),
-                    ],
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: Column(
+                      children: [
+                        Image.asset('assets/images/radio_1.png'),
+                        SizedBox(height: 30),
+                        Image.asset('assets/images/radio_2.png'),
+                      ],
+                    ),
                   );
                 },
                 itemCount: 5,
