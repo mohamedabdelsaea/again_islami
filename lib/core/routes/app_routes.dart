@@ -9,19 +9,19 @@ class AppRoutes {
     switch (setting.name) {
       case PageRouteName.initial:
         return MaterialPageRoute(
-          builder: (context) => SplashScreen(),
+          builder: (context) => const SplashScreen(),
         );
       case PageRouteName.onboarding:
         return MaterialPageRoute(
-          builder: (context) => OnBoarding(),
+          builder: (context) => const OnBoarding(),
         );
       case PageRouteName.layout:
         return MaterialPageRoute(
-          builder: (context) => Layout(),
+          builder: (context) => const Layout(),
         );
       default:
         return MaterialPageRoute(
-          builder: (context) => SplashScreen(),
+          builder: (context) => const SplashScreen(),
         );
     }
   }
