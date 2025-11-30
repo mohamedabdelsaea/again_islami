@@ -1,5 +1,6 @@
 import 'package:again_islami/core/routes/page_route_name.dart';
 import 'package:again_islami/core/theme/app_color.dart';
+import 'package:again_islami/main.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -28,7 +29,7 @@ class _OnBoardingScreenState extends State<OnBoarding> {
     await prefs.setBool("onboarding_seen", true);
 
     if (!mounted) return;
-    Navigator.pushReplacementNamed(context, PageRouteName.layout);
+    navigatorKey.currentState!.pushReplacementNamed(PageRouteName.layout);
   }
 
   @override
@@ -65,7 +66,6 @@ class _OnBoardingScreenState extends State<OnBoarding> {
                             ),
                           ),
                         const SizedBox(height: 30),
-
                         if (index == pages.length - 1)
                           ElevatedButton(
                             onPressed: _finishOnBoarding,

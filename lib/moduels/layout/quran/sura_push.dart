@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:again_islami/core/theme/app_color.dart';
 import 'package:again_islami/moduels/layout/quran/widget/sura_data.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +31,7 @@ class _SuraPushState extends State<SuraPush> {
         versesList = content.split('\n');
       });
     } catch (e) {
-      print("خطأ أثناء تحميل السورة: $e");
+      log("خطأ أثناء تحميل السورة: $e");
     }
   }
 

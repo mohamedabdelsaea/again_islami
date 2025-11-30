@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:again_islami/core/routes/page_route_name.dart';
+import 'package:again_islami/main.dart';
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +17,9 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-      Duration(seconds: 4),
+      const Duration(seconds: 4),
       () {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
+        navigatorKey.currentState!.pushNamedAndRemoveUntil(
           PageRouteName.layout,
           (route) => false,
         );
@@ -33,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     int delay = 1;
     var size = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/SplashScreen.png'),
           fit: BoxFit.cover,

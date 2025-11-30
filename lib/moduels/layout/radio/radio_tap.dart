@@ -15,7 +15,7 @@ class _RadioTapState extends State<RadioTap> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/Background_radio.png'),
             fit: BoxFit.cover),
@@ -62,7 +62,7 @@ class _RadioTapState extends State<RadioTap> {
                     ),
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -93,7 +93,7 @@ class _RadioTapState extends State<RadioTap> {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Expanded(
               child: ListView.builder(
                 itemBuilder: (context, index) {
@@ -102,7 +102,7 @@ class _RadioTapState extends State<RadioTap> {
                     child: Column(
                       children: [
                         Image.asset('assets/images/radio_1.png'),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         Image.asset('assets/images/radio_2.png'),
                       ],
                     ),

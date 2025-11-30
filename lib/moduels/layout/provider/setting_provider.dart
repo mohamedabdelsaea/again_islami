@@ -4,12 +4,12 @@ import 'package:flutter/foundation.dart';
 
 class SettingProvider extends ChangeNotifier {
 
-  List <RecentData> _recentData =[
+  final List <RecentData> _recentData =[
     RecentData(nameAR: 'الأنبياء', nameEN:  'Al-Anbiya', verses: '112 Verses'),
     RecentData(nameAR: 'الفاتحه', nameEN:  'Al-Fatiha', verses: '7 Verses'),
   ];
 
-  List<SuraData> _suraData = [
+  final List<SuraData> _suraData = [
     SuraData(id: 1, nameAR: "الفاتحه", nameEN: "Al-Fatiha", verses: '7'),
     SuraData(id: 2, nameAR: "البقرة", nameEN: "Al-Baqarah", verses: '286'),
     SuraData(id: 3, nameAR: "آل عمران", nameEN: "Aal-E-Imran", verses: '200'),

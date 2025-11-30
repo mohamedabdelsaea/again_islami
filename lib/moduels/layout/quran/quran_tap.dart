@@ -80,7 +80,7 @@ class _QuranTapState extends State<QuranTap> {
                         AssetImage('assets/icons/quran.png'),
                       ),
                     ),
-                    fillColor: AppColor.whites.withOpacity(0.05),
+                    fillColor: AppColor.whites.withAlpha(50),
                     filled: true,
                   ),
                   cursorColor: AppColor.primary,
@@ -101,7 +101,7 @@ class _QuranTapState extends State<QuranTap> {
                 ),
               ),
             ),
-            SliverToBoxAdapter(child: SizedBox(height: 20)),
+            const SliverToBoxAdapter(child: SizedBox(height: 20)),
 
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -130,7 +130,7 @@ class _QuranTapState extends State<QuranTap> {
               ),
             ),
 
-            SliverToBoxAdapter(child: SizedBox(height: 10)),
+            const SliverToBoxAdapter(child: SizedBox(height: 10)),
           ],
         ),
       ),

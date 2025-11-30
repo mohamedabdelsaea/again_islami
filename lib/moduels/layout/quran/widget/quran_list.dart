@@ -14,7 +14,7 @@ class QuranList extends StatelessWidget {
         Container(
           width: 50,
           height: 50,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
               image: DecorationImage(
             image: AssetImage('assets/icons/sura_icon.png'),
           )),
@@ -50,7 +50,7 @@ class QuranList extends StatelessWidget {
             ),
           ],
         ),
-        Spacer(),
+        const Spacer(),
         Text(
           sura.nameAR,
           style: TextStyle(

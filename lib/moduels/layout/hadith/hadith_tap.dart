@@ -52,11 +52,11 @@ class _HadithTapState extends State<HadithTap> {
       margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.85),
+        color: Colors.white.withAlpha(200),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.2),
+            color: Colors.black.withAlpha(20),
             blurRadius: 6,
             offset: const Offset(2, 4),
           ),

@@ -18,7 +18,7 @@ class _SbhaTapState extends State<SbhaTap> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage('assets/images/Background_sbha.png'),
             fit: BoxFit.cover),

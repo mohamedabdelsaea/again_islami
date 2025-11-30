@@ -6,6 +6,9 @@ import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:provider/provider.dart';
 
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('ar', null);
@@ -30,10 +33,11 @@ class MyApp extends StatelessWidget {
         statusBarBrightness: Brightness.light,
       ),
     );
-    return MaterialApp(
+    return  MaterialApp(
       debugShowCheckedModeBanner: false,
       onGenerateRoute: AppRoutes.onGenerateRoute,
       initialRoute: PageRouteName.initial,
+      navigatorKey: navigatorKey,
     );
   }
 }

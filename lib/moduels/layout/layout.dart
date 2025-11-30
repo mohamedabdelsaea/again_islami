@@ -19,11 +19,11 @@ class _LayoutState extends State<Layout> {
   @override
   Widget build(BuildContext context) {
     List<Widget> tap = [
-      QuranTap(),
-      HadithTap(),
-      SbhaTap(),
-      RadioTap(),
-      TimesTap(),
+      const QuranTap(),
+      const HadithTap(),
+      const SbhaTap(),
+      const RadioTap(),
+      const TimesTap(),
     ];
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -40,29 +40,29 @@ class _LayoutState extends State<Layout> {
         showUnselectedLabels: false,
         items: [
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/quran.png')),
-              activeIcon: ImageIcon(AssetImage('assets/icons/quran.png'),
-                  color: AppColor.whites.withOpacity(0.7)),
+              icon: const ImageIcon(AssetImage('assets/icons/quran.png')),
+              activeIcon: ImageIcon(const AssetImage('assets/icons/quran.png'),
+                  color: AppColor.whites.withAlpha(100)),
               label: 'Quran'),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/hadith.png')),
-              activeIcon: ImageIcon(AssetImage('assets/icons/hadith.png'),
-                  color: AppColor.whites.withOpacity(0.7)),
+              icon: const ImageIcon(AssetImage('assets/icons/hadith.png')),
+              activeIcon: ImageIcon(const AssetImage('assets/icons/hadith.png'),
+                  color: AppColor.whites.withAlpha(100)),
               label: 'Hadith'),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/sbha.png')),
-              activeIcon: ImageIcon(AssetImage('assets/icons/sbha.png'),
-                  color: AppColor.whites.withOpacity(0.7)),
+              icon: const ImageIcon(AssetImage('assets/icons/sbha.png')),
+              activeIcon: ImageIcon(const AssetImage('assets/icons/sbha.png'),
+                  color: AppColor.whites.withAlpha(100)),
               label: 'Sbha'),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/radio.png')),
-              activeIcon: ImageIcon(AssetImage('assets/icons/radio.png'),
-                  color: AppColor.whites.withOpacity(0.7)),
+              icon: const ImageIcon(AssetImage('assets/icons/radio.png')),
+              activeIcon: ImageIcon(const AssetImage('assets/icons/radio.png'),
+                  color: AppColor.whites.withAlpha(100)),
               label: 'Radio'),
           BottomNavigationBarItem(
-              icon: ImageIcon(AssetImage('assets/icons/times.png')),
-              activeIcon: ImageIcon(AssetImage('assets/icons/times.png'),
-                  color: AppColor.whites.withOpacity(0.7)),
+              icon: const ImageIcon(AssetImage('assets/icons/times.png')),
+              activeIcon: ImageIcon(const AssetImage('assets/icons/times.png'),
+                  color: AppColor.whites.withAlpha(100)),
               label: 'Timer'),
         ],
       ),
